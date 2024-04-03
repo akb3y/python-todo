@@ -41,6 +41,7 @@ const App = () => {
 
   return (
     <div>
+      <h1>Task Master</h1>
       <AddTask />
       <Tasks data={data} handleToggleCompleted={handleToggleCompleted} fetchData={fetchData} />
     </div>
