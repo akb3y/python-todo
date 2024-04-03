@@ -37,13 +37,11 @@ const AddTask = () => {
       <br />
       <label htmlFor="description">Description:</label>
       <br />
-      <input
-        type="text"
+      <textarea
         id="description"
-        name="description"
         value={description}
         onChange={handleDescription}
-      />
+        rows="3"></textarea>
       <br />
       <input type="submit" value="Add Task" />
     </form>
