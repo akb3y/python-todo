@@ -6,6 +6,7 @@ import "../public/style.css";
 
 const App = () => {
   const [data, setData] = useState([]);
+  const [isShown, setIsShown] = useState(false);
   const fetchData = async () => {
     try {
       const response = await axios.get("http://localhost:3100/todo");
@@ -39,11 +40,20 @@ const App = () => {
     }
   };
 
+  const handleToggleShown = async () => {
+    setIsShown(!isShown);
+  };
+
   return (
     <div>
       <h1>Task Master</h1>
-      <AddTask />
-      <Tasks data={data} handleToggleCompleted={handleToggleCompleted} fetchData={fetchData} />
+      {isShown ? <AddTask isShown={isShown} handleToggleShown={handleToggleShown} /> : null}
+      <Tasks
+        data={data}
+        handleToggleCompleted={handleToggleCompleted}
+        fetchData={fetchData}
+        handleToggleShown={handleToggleShown}
+      />
     </div>
   );
 };

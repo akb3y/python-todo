@@ -3,7 +3,7 @@ import React from "react";
 import axios from "axios";
 import { MdDeleteForever } from "react-icons/md";
 
-const Tasks = ({ data, handleToggleCompleted, fetchData }) => {
+const Tasks = ({ data, handleToggleCompleted, fetchData, handleToggleShown }) => {
   const deleteTask = async (taskId) => {
     try {
       await axios.delete(`http://localhost:3100/todo/${taskId}`);
@@ -47,6 +47,11 @@ const Tasks = ({ data, handleToggleCompleted, fetchData }) => {
           ))}
         </tbody>
       </table>
+      <div className="add-button-container">
+        <button className="add-button" onClick={handleToggleShown}>
+          Add task
+        </button>
+      </div>
     </div>
   );
 };
