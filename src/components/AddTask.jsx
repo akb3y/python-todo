@@ -49,7 +49,8 @@ const AddTask = ({ isShown, handleToggleShown }) => {
       isOpen={isShown}
       onRequestClose={handleToggleShown}
       style={customStyles}
-      contentLabel="Add Task Modal">
+      contentLabel="Add Task Modal"
+      ariaHideApp={false}>
       <h2>Add Task</h2>
       <form className="form-container" onSubmit={handleSubmit}>
         <label htmlFor="task">Task Name:</label>
