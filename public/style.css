@@ -26,6 +26,16 @@ h1 {
     word-wrap: break-word;
   }
   
+  .task-col input[type="text"],
+  .description-col input[type="text"] {
+  width: calc(90% - 25px);
+}
+
+.save-icon {
+  padding-left: 10px;
+  width: 20px;
+}
+
   .completed-col,
   .delete-col {
     width: 5%;
