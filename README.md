@@ -11,8 +11,8 @@ Task Master is an app that allows you to add, delete, and update tasks. You can 
 
 | Stack      | Dependancies   | Dev-dependancies |
 | ---------- | -------------- | ---------------- |
-| Python     | react-icons     | webpack/babel    |
-| SQLite3    | react-modal    | eslint    | 
+| Python     | flask          | webpack/babel    |
+| SQLite3    | react-icons    | eslint    | 
 | React.js   | Axios          |
 
 ### Installation
