@@ -1,6 +1,6 @@
 # Task Master
 
-Task Master is an app that allows you to add and delete tasks.  It also allows you to add subtasks so that you can breakdown the larger tasks into smaller ones.  You can mark a task as completed and delete tasks after it completed.
+Task Master is an app that allows you to add, delete, and update tasks. You can mark a task as completed.
 
 #### Table of Contents
   - [Technologies](#Technologies)
