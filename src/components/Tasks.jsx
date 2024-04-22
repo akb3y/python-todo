@@ -9,6 +9,7 @@ const Tasks = ({ data, handleToggleCompleted, fetchData, handleToggleShown }) =>
   const [editingDescriptionId, setEditingDescriptionId] = useState(null);
   const [editedTitle, setEditedTitle] = useState("");
   const [editedDescription, setEditedDescription] = useState("");
+  const [completed, setCompleted] = useState(false);
 
   const deleteTask = async (taskId) => {
     try {
@@ -24,6 +25,7 @@ const Tasks = ({ data, handleToggleCompleted, fetchData, handleToggleShown }) =>
     setEditingDescriptionId(null);
     setEditedTitle(todo.title);
     setEditedDescription(todo.description);
+    setCompleted(todo.completed);
   };
 
   const handleEditDescription = (todo) => {
@@ -31,13 +33,15 @@ const Tasks = ({ data, handleToggleCompleted, fetchData, handleToggleShown }) =>
     setEditingDescriptionId(todo.id);
     setEditedTitle(todo.title);
     setEditedDescription(todo.description);
+    setCompleted(todo.completed);
   };
 
   const handleSave = async (todoId) => {
     try {
       await axios.put(`http://localhost:3100/todo/${todoId}`, {
         title: editedTitle,
-        description: editedDescription
+        description: editedDescription,
+        completed: completed
       });
     } catch (error) {
       console.error("Error updating task:", error);
