@@ -18,6 +18,7 @@ const customStyles = {
 const AddTask = ({ isShown, handleToggleShown }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [task, setTask] = useState("todo");
 
   const handleTitle = (e) => {
     setTitle(e.target.value);
@@ -27,10 +28,15 @@ const AddTask = ({ isShown, handleToggleShown }) => {
     setDescription(e.target.value);
   };
 
+  const handleTask = (e) => {
+    setTask(e.target.value);
+  };
+
   const handleSubmit = async () => {
     const data = {
       title: title,
-      description: description
+      description: description,
+      task: task
     };
     try {
       const response = await axios.post("http://localhost:3100/todo", data);
@@ -38,7 +44,7 @@ const AddTask = ({ isShown, handleToggleShown }) => {
       // Reset form fields after successful submission
       setTitle("");
       setDescription("");
-      handleToggleShown(); // Close the modal after successful submission
+      handleToggleShown();
     } catch (error) {
       console.error("Error adding task:", error);
     }
@@ -64,6 +70,12 @@ const AddTask = ({ isShown, handleToggleShown }) => {
           value={description}
           onChange={handleDescription}
           rows="3"></textarea>
+        <br />
+        <select onChange={handleTask}>
+          <option value="todo">Todo</option>
+          <option value="doing">Doing</option>
+          <option value="done">Done</option>
+        </select>
         <br />
         <button type="submit">Add Task</button>
         <button onClick={handleToggleShown}>Cancel</button>
