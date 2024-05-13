@@ -10,7 +10,7 @@ def initialize_database():
     conn = sqlite3.connect('todo.db')
     c = conn.cursor()
     c.execute('''CREATE TABLE IF NOT EXISTS todos
-                 (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, description TEXT, completed BOOLEAN)''')
+                 (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, description TEXT, task TEXT)''')
     conn.commit()
     conn.close()
 
@@ -20,14 +20,11 @@ def create_todo():
     data = request.get_json()
     title = data.get('title')
     description = data.get('description')
-    completed = data.get('completed', False)
-
-    if not isinstance(completed, bool):
-        return jsonify({"error": "Completed field must be a boolean"}), 400
+    task = data.get('task', 'todo')
 
     conn = sqlite3.connect('todo.db')
     c = conn.cursor()
-    c.execute("INSERT INTO todos (title, description, completed) VALUES (?, ?, ?)", (title, description, completed))
+    c.execute("INSERT INTO todos (title, description, task) VALUES (?, ?, ?)", (title, description, task))
     conn.commit()
     conn.close()
 
@@ -56,27 +53,25 @@ def update_todo(todo_id):
         data = request.get_json()
         title = data.get('title')
         description = data.get('description')
-        completed = data.get('completed')
+        task = data.get('task')
 
-        conn = sqlite3.connect('todo.db')
+        conn = sqlite3.connect('todo1.db')
         c = conn.cursor()
-        c.execute("UPDATE todos SET title=?, description=?, completed=? WHERE id=?", (title, description, completed, todo_id))
+        c.execute("UPDATE todos SET title=?, description=?, task=? WHERE id=?", (title, description, task, todo_id))
         conn.commit()
         conn.close()
     if request.method == 'PATCH':
         data = request.get_json()
-        completed = data.get('completed')
+        task = data.get('task')
 
-        if completed is None:
-            return jsonify({"error": "Completed field is required"}), 400
+        if task is None:
+            return jsonify({"error": "Task field is required"}), 400
 
         conn = sqlite3.connect('todo.db')
         c = conn.cursor()
-        c.execute("UPDATE todos SET completed=? WHERE id=?", (completed, todo_id))
+        c.execute("UPDATE todos SET task=? WHERE id=?", (task, todo_id))
         conn.commit()
         conn.close()
-
-    return jsonify({"message": "Todo updated successfully"})
 
     return jsonify({"message": "Todo updated successfully"})
 
