@@ -128,3 +128,70 @@ h1 {
     margin-top: 20px;
     text-align: center;
   }
+
+  select {
+    font-family: "Open Sans", sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #000;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: #fff; /* Adjust as needed */
+    margin-bottom: 15px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Style for dropdown options */
+  select option {
+    font-family: "Open Sans", sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #000;
+  }
+
+  .task-table {
+    display: flex;
+  }
+  
+  .todo-container,
+  .doing-container,
+  .done-container {
+    flex: 1;
+    padding: 10px;
+    border: 1px black solid;
+    margin: 10px;
+  }
+  
+  .todo-container {
+    background-color: #f9f9f9;
+  }
+  
+  .doing-container {
+    background-color: #eaeaea;
+  }
+  
+  .done-container {
+    background-color: #f0f0f0;
+  }
+
+  .task-select {
+    font-family: "Open Sans", sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #000;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: #fff; /* Adjust as needed */
+    margin-bottom: 15px;
+    width: 50%;
+    box-sizing: border-box;
+  }
